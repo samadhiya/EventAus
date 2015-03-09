@@ -1,0 +1,7 @@
+.panel.panel-success
+  .panel-heading.text-center Upcoming Events
+  .panel-body
+    .row(ng-repeat="event in events | orderBy:'published':reverse | limitTo:10")
+      .col-md-3 {{event.published | date:'MMM d'}}
+      .col-md-9
+          a(href="/events/{{event._id}}") {{event.title}}

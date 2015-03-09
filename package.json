@@ -1,0 +1,35 @@
+{
+  "name": "EventAus",
+  "version": "1.0.0",
+  "description": "\"Australian events\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "0.10.31",
+    "npm": "1.4.x"
+  },
+  "author": "Vaibhav Samadhiya",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.9.2",
+    "bower": "^1.3.12",
+    "cookie-parser": "^1.3.3",
+    "express": "^4.10.1",
+    "express-session": "^1.10.1",
+    "jade": "^1.7.0",
+    "mongoose": "^3.8.21",
+    "morgan": "^1.4.1",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0",
+    "stylus": "^0.49.2"
+  },
+  "devDependencies": {
+    "karma": "^0.12.31",
+    "karma-chai-plugins": "^0.2.4",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-mocha": "^0.1.10",
+    "mocha": "^2.1.0"
+  }
+}

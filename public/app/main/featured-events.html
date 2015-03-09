@@ -1,0 +1,1 @@
+<div class="panel panel-success"><div class="panel-heading text-center">Featured Events</div><div class="panel-body"><div ng-repeat="event in events | filter:{featured:true} | limitTo:10 " class="row"><div class="col-md-6"><a href="/events/{{event._id}}">{{event.title}}</a></div><div class="col-md-6"><p>{{event.venue}}</p></div></div></div></div>

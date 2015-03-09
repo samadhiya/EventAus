@@ -1,0 +1,31 @@
+.container
+    .well
+        h1 {{published | date:'yyyy-MM-dd'}}
+        form.form-horizontal(name="EventForm")
+            fieldset
+                legend Event Details
+                .form-group
+                    label.col-md-2.control-label(for="title") Title
+                    .col-md-10
+                        input.form-control(name="title", type="text", placeholder='title', ng-model="event.title", required)
+                .form-group
+                    label.col-md-2.control-label(for="featured") Featured
+                    .col-md-10
+                        input.form-control(name="featured", type="text", placeholder="Featured", ng-model="event.featured", required)
+                .form-group
+                    label.col-md-2.control-label(for="published") Published
+                    .col-md-4
+                        input.form-control(type='date', name='published', placeholder="dd/mm/yyyy", ng-model='published')
+
+                .form-group
+                    label.col-md-2.control-label(for="tags") Tag
+                    .col-md-10
+                        input.form-control(name="tags", type="text", placeholder="Tags", ng-model="event.tags")
+                .form-group
+                    .col-md-10.col-md-offset-2
+                        .pull-right
+                            button.btn.btn-primary(ng-click="update()") Update
+                            | &nbsp;
+                            a.btn.btn-default(href="/") Cancel
+
+

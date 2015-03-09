@@ -1,0 +1,37 @@
+body
+  padding-top 79px
+
+.navbar-inverse
+  background-color #2c3f48
+
+.navbar-header a.navbar-brand
+  margin-top -15px
+  margin-bottom -20px
+  h6
+    color #ccc
+    margin-top -1px
+    margin-left -6px
+
+footer
+  padding-left 15px
+  padding-right 15px
+  p
+    border-top 1px solid #d7e0e2
+
+.navbar-form
+  .form-group
+    margin-left 10px
+  .button
+    margin-left 10px
+
+.top-padding-med
+  padding-top 10px
+
+.margin-left-med
+  margin-left 10px
+
+.toast-top-right
+  top 70px
+
+.toast.success
+  background-color #13987e

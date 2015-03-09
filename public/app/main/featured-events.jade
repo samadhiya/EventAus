@@ -1,0 +1,8 @@
+.panel.panel-success
+  .panel-heading.text-center Featured Events
+  .panel-body
+    .row(ng-repeat="event in events | filter:{featured:true} | limitTo:10 ")
+      .col-md-6
+        a(href="/events/{{event._id}}") {{event.title}}
+      .col-md-6
+        p {{event.venue}}
