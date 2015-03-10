@@ -15,9 +15,13 @@ exports.getEventsById = function(req, res){
 exports.updateEvents = function(req, res){
   var eventUpdates = req.body;
 
+  Event.findOne({_id:req.params.id}).exec(function(err, event){
+    res.send(event);
+  })
+
   req.event.title = eventUpdates.title;
   req.event.featured = eventUpdates.featured;
-  req.event.published = eventUpdates.published;
+  req.event.published = new Date(eventUpdates.published);
   req.event.tags = eventUpdates.tags;
 
   req.event.save(function(err){

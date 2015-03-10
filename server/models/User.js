@@ -28,7 +28,7 @@ function createDefaultUsers() {
       hash = encrypt.hashPwd(salt, 'vab');
       User.create({firstName: 'Vaibhav', lastName: 'Samadhiya', username: 'sam@sam.com', salt: salt, hashed_pwd: hash, roles: ['admin']});
       salt = encrypt.createSalt();
-      hash = encrypt.hashPwd(salt, 'chor');
+      hash = encrypt.hashPwd(salt, 'sam');
       User.create({firstName: 'Sanjay', lastName: 'Kan', username: 'San', salt: salt, hashed_pwd: hash, roles: []});
     }
   })

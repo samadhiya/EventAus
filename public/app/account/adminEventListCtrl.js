@@ -1,4 +1,4 @@
-angular.module('app').controller('adminEventListCtrl', function($scope, $q, mvCachedEvents, $routeParams, mvEvent, notifier){
+angular.module('app').controller('adminEventListCtrl', function($scope, $q, mvCachedEvents, $routeParams, mvAuth, notifier){
   mvCachedEvents.query().$promise.then(function(collection){
     collection.forEach(function(event){
       if(event._id ===$routeParams.id){
@@ -12,14 +12,13 @@ angular.module('app').controller('adminEventListCtrl', function($scope, $q, mvCa
   });
 
   $scope.update = function(){
-    var deferred = $q.defer();
     var newEventData = {
       title: $scope.title,
       featured: $scope.featured,
       published: new Date($scope.published),
       tags: $scope.tags
     };
-    mvEvent.$update(newEventData).then(function(){
+    mvAuth.updateEvent(newEventData).then(function(){
       notifier.notify('Your account details have been updated');
     }, function(reason){
       notifier.error(reason);

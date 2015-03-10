@@ -1,4 +1,4 @@
-angular.module('app').factory('mvAuth', function($http, identity, $q, mvUser){
+angular.module('app').factory('mvAuth', function($http, identity, $q, mvUser, mvEvent, mvCachedEvents){
   return{
     authenticateUser: function(username, password){
       var deferred = $q.defer();
@@ -24,6 +24,16 @@ angular.module('app').factory('mvAuth', function($http, identity, $q, mvUser){
         deferred.resolve();
       }, function(response){
         deferred.reject(response.data.reason);
+      });
+      return deferred.promise;
+    },
+    updateEvent: function(newEventData){
+      var deferred = $q.defer();
+      newEventData.$update().then(function(){
+        mvCachedEvents.query();
+        deferred.resolve();
+        }, function(response){
+        deferred.reject(response.data.reason)
       });
       return deferred.promise;
     },
