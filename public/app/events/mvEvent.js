@@ -1,4 +1,7 @@
-angular.module('app').factory('mvEvent', function($resource){
-  return $resource('/api/events/:id', {_id:'@id'}, {update: {method: 'PUT', isArray: false}});
+angular.module('app').factory('mvEvent',
+  function($resource){
+  return $resource('/api/events/:id', {id:'@_id'}, {
+    update: {method: 'PUT'}});
 
-});
+}
+);

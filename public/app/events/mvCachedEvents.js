@@ -7,6 +7,9 @@ angular.module('app').factory('mvCachedEvents', function(mvEvent){
         eventList = mvEvent.query();
       }
       return eventList;
+    },
+    refresh: function(){
+      return eventList = 0;
     }
   }
 });

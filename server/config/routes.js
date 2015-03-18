@@ -6,13 +6,22 @@ var auth = require('./auth'),
 
 module.exports = function(app){
 
-  app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
-  app.post('/api/users', users.createUser);
-  app.put('/api/users', users.updateUser);
+  app.route('/api/users')
+    .get(auth.requiresRole('admin'), users.getUsers)
+    .post(users.createUser)
+    .put(users.updateUser);
 
-  app.get('/api/events', events.getEvents);
-  app.get('/api/events/:id', events.getEventsById);
-  app.put('/api/events', events.updateEvents);
+  app.route('/api/events')
+    .get(events.getEvents)
+    .post(events.create);
+
+
+  app.route('/api/events/:id')
+    .get(events.getEventsById)
+    .put(auth.requiresRole('admin'), events.updateEvents)
+    .delete(auth.requiresRole('admin'), events.delete)
+
+
   app.get('/partials/*', function(req, res) {
     res.render('../../public/app/' + req.params[0]);
   });

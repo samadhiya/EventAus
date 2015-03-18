@@ -24,8 +24,10 @@
                 .form-group
                     .col-md-10.col-md-offset-2
                         .pull-right
-                            button.btn.btn-primary(ng-click="update()") Update
-                            | &nbsp;
                             a.btn.btn-default(href="/") Cancel
+                            &nbsp;
+                            button.btn.btn-success(ng-click="update()") Update
+                            &nbsp;
+                            button.btn.btn-danger(ng-click="deleteEvent(event)") Delete
 
 

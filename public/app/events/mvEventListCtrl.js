@@ -6,4 +6,5 @@ angular.module('app').controller('mvEventListCtrl', function($scope, mvCachedEve
     {value: "published", text:"Sort by Publish Date"}];
 
   $scope.sortOrder = $scope.sortOptions[0].value;
+
 });

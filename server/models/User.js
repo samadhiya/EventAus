@@ -25,8 +25,8 @@ function createDefaultUsers() {
     if (collection.length === 0) {
       var salt, hash;
       salt = encrypt.createSalt();
-      hash = encrypt.hashPwd(salt, 'vab');
-      User.create({firstName: 'Vaibhav', lastName: 'Samadhiya', username: 'sam@sam.com', salt: salt, hashed_pwd: hash, roles: ['admin']});
+      hash = encrypt.hashPwd(salt, 'admin');
+      User.create({firstName: 'Vaibhav', lastName: 'Samadhiya', username: 'admin@eventaus.com', salt: salt, hashed_pwd: hash, roles: ['admin']});
       salt = encrypt.createSalt();
       hash = encrypt.hashPwd(salt, 'sam');
       User.create({firstName: 'Sanjay', lastName: 'Kan', username: 'San', salt: salt, hashed_pwd: hash, roles: []});

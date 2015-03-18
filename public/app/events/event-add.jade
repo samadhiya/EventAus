@@ -1,0 +1,30 @@
+.container
+  .well
+    form.form-horizontal(name="EventForm")
+      fieldset
+        legend Event Details
+        .form-group
+          label.col-md-2.control-label(for="title") Title
+          .col-md-10
+            input.form-control(name="title", type="text", placeholder='title', ng-model="title", required)
+        .form-group
+          label.col-md-2.control-label(for="featured") Venue
+          .col-md-10
+            input.form-control(name="venue", type="text", placeholder="Venue", ng-model="venue", required)
+        .form-group
+          label.col-md-2.control-label(for="featured") Featured
+          .col-md-10
+            input.form-control(name="featured", type="text", placeholder="Featured", ng-model="featured", required)
+        .form-group
+          label.col-md-2.control-label(for="published") Published
+          .col-md-4
+            input.form-control(type='date', name='published', placeholder="dd/mm/yyyy", ng-model='published')
+
+        .form-group
+          label.col-md-2.control-label(for="tags") Tag
+          .col-md-10
+            input.form-control(name="tags", type="text", placeholder="Tags", ng-model="tags")
+        .form-group
+          .col-md-10.col-md-offset-2
+            .pull-right
+              button.btn.btn-primary(ng-click="add()") Add

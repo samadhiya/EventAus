@@ -3,7 +3,7 @@ angular.module('app').controller('navbarLoginCtrl', function($scope, $http, iden
   $scope.signin = function(username, password){
     mvAuth.authenticateUser(username, password).then(function(success){
       if(success){
-        notifier.notify('Mate, you successfully logged in!');
+        notifier.notify("You've successfully logged in!");
       }
       else{
         notifier.notify('Login failed, please try again');

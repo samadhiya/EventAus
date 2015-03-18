@@ -23,8 +23,12 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
       resolve: routeRoleChecks.admin
     })
     .when('/admin/events/:id', { templateUrl: '/partials/account/admin-event-list',
-      controller: 'adminEventListCtrl'
-      //resolve: routeRoleChecks.admin
+      controller: 'adminEventListCtrl',
+      resolve: routeRoleChecks.admin
+    })
+    .when('/admin/event/create', { templateUrl: '/partials/events/event-add',
+      controller: 'mvEventAddCtrl',
+      resolve: routeRoleChecks.user
     })
     .when('/profile', {templateUrl: '/partials/account/profile',
       controller: 'mvProfileCtrl',
