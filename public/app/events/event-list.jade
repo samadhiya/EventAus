@@ -1,4 +1,7 @@
 .container.top-padding-med
+    .centered(ng-show="identity.isAuthenticated()")
+        a(href='/admin/event/create')
+            button.btn.btn-primary Create Event
     .pull-right
         form.form-inline
             .form-group
