@@ -22,8 +22,7 @@ function deleteAndImportNew(){
   }, function (error, response, body, one) {
     var data = (JSON.parse(body));
     data.events.forEach(function(event){
-     // var pubDate=new Date(event.datetime_start.split('T')[0] + " " + event.datetime_start.split('T')[1].split('.')[0] + ' UTC');
-     // var pubDate1=new Date(event.datetime_end.split('T')[0] + " " + event.datetime_end.split('T')[1].split('.')[0] + ' UTC');
+
       //console.log("Event is  ",event);
       var eventLocal =new Event(event);
       eventLocal.title=event.name;

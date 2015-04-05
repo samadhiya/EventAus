@@ -33,11 +33,11 @@
                     br
                 strong Date:
                     &nbsp
-                {{event.datetime_start | date:'EEE, MMM d y'}} - {{event.datetime_end | date:'EEE, MMM d y'}}
+                {{event.datetime_start | date:'EEE, MMM d y' : 'UTC'}} - {{event.datetime_end | date:'EEE, MMM d y' : 'UTC'}}
                 br
                 strong Time:
                     &nbsp
-                {{event.datetime_start | date:'h:mm a'}} until {{event.datetime_end | date:'h:mm a'}}
+                {{event.datetime_start | date:'h:mm a' : 'UTC'}} until {{event.datetime_end | date:'h:mm a' : 'UTC'}}
 
     .row
         .col-md-6.col-xs-8.text-justify
