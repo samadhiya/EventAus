@@ -6,7 +6,7 @@ angular.module('app').controller('navbarLoginCtrl', function($scope, $http, iden
         notifier.notify("You've successfully logged in!");
       }
       else{
-        notifier.notify('Login failed, please try again');
+        notifier.error('Login failed, please try again');
       }
     });
   };

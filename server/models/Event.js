@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var eventSchema = mongoose.Schema({
   title: {type:String, required: '{PATH} is required'},
   featured: {type: Boolean, required: '{PATH} is required'},
-  published: {type: Date, required: '{PATH} is required'},
+  published: {type: Date, default:new Date()},
   tags: [String],
   description: {type:String, required: '{PATH} is required'},
   datetime_start:{type:Date},
@@ -24,9 +24,7 @@ var eventSchema = mongoose.Schema({
   sessions:{},
   ticket_types:{},
   artists:{},
-  web_sites:{},
-  images:{},
-  created:{type: Date, default:new Date()}
+  web_sites:{}
 });
 
 var Event = mongoose.model('Event', eventSchema);
