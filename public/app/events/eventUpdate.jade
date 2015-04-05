@@ -31,8 +31,10 @@
 
                 .form-group
                     label.col-md-2.control-label(for="featured") Featured
-                    .col-md-10
-                        input.form-control(name="featured", type="text", placeholder="Featured", ng-model="event.featured", required)
+                    .col-md-2
+                        select.form-control(ng-model="event.featured", name="featured" required)
+                            option(value='true') True
+                                option(value='false') False
                 .form-group
                     label.col-md-2.control-label(for="published") Published
                     .col-md-4

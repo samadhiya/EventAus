@@ -22,10 +22,14 @@ function deleteAndImportNew(){
   }, function (error, response, body, one) {
     var data = (JSON.parse(body));
     data.events.forEach(function(event){
+     // var pubDate=new Date(event.datetime_start.split('T')[0] + " " + event.datetime_start.split('T')[1].split('.')[0] + ' UTC');
+     // var pubDate1=new Date(event.datetime_end.split('T')[0] + " " + event.datetime_end.split('T')[1].split('.')[0] + ' UTC');
       //console.log("Event is  ",event);
       var eventLocal =new Event(event);
       eventLocal.title=event.name;
       eventLocal.venue=event.location.name;
+      eventLocal.datetime_start=new Date(event.datetime_start + ' UTC');
+      eventLocal.datetime_end=new Date(event.datetime_end + ' UTC');
       eventLocal.externalID=event.id;
       eventLocal.published=Date.now();
       eventLocal.image=event.images.images[0].transforms.transforms[4]?event.images.images[0].transforms.transforms[4].url : event.images.images[0].transforms.transforms[3]?event.images.images[0].transforms.transforms[3].url : event.images.images[0].transforms.transforms[2]?event.images.images[0].transforms.transforms[2].url : event.images.images[0].transforms.transforms[1]?event.images.images[0].transforms.transforms[1].url : event.images.images[0].transforms.transforms[0].url;
