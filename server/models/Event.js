@@ -5,32 +5,29 @@ var eventSchema = mongoose.Schema({
   featured: {type: Boolean, required: '{PATH} is required'},
   published: {type: Date, required: '{PATH} is required'},
   tags: [String],
-  description: [String],
-  venue: {type:String, required: '{PATH} is required'}
+  description: {type:String, required: '{PATH} is required'},
+  datetime_start:{type:Date},
+  datetime_end:{type:Date},
+  image: {type:String},
+  venue: {type:String, required: '{PATH} is required'},
+  externalID:{type:String},
+  location_summary:{type:String},
+  address:{type:String},
+  is_free	:{type: Boolean},
+  is_cancelled	:{type: Boolean},
+  restrictions:{type:String},
+  point:{},
+  timezone:{type:String},
+  datetime_summary:{type:String},
+  location:{},
+  category:{},
+  sessions:{},
+  ticket_types:{},
+  artists:{},
+  web_sites:{},
+  images:{},
+  created:{type: Date, default:new Date()}
 });
 
 var Event = mongoose.model('Event', eventSchema);
 
-function createDefaultEvents() {
-  Event.find({}).exec(function(err, collection) {
-    if(collection.length === 0) {
-      Event.create({title: 'Broadway Unplugged', featured: true, published: new Date('3/16/2015'), tags: ['Open Mic', 'Jams'], venue: 'The Vanguard, Sydney', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: 'Mudfest st Bunnamagoo Winery', featured: true, published: new Date('3/16/2015'), tags: ['Lifestyle Shows', 'Expo'], venue: '603 Henry Lawson Drive, Mudgee', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: "St Patrick's Day", featured: false, published: new Date('3/16/2015'), tags: ['Lifestyle Shows', 'Expo'], venue: 'Town Hall, Gerringong', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: 'Binda Picnic Races', featured: false, published: new Date('3/16/2015'), tags: ['Sports'], venue: 'Funny Hill Race Track, Binda', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: "St Patrick's Day Irish Dancing", featured: true, published: new Date('3/16/2015'), tags: ['Lifestyle Shows', 'Expo'], venue: '100 Kerr St, Ballina', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: 'Sydney Opera House Goes Green', featured: true, published: new Date('3/17/2015'), tags: ['Lifestyle Shows', 'Expo'], venue: 'Sydney Opera House, Sydney', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: 'Future Submarine', featured: true, published: new Date('3/17/2015'), tags: ['Education'], venue: "Sydney Mechanics School of Art", description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: 'The 7 Sopranos Tour', featured: true, published: new Date('3/18/2015'), tags: ['Acoustic', 'Instrumental'], venue: 'Armidale Counsil, Armidale', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: 'Delta Jazz', featured: true, published: new Date('3/18/2015'), tags: ['Jazz'], venue: 'Lane Cove Club, Sydney', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: 'Festival of Small Halls', featured: false, published: new Date('3/19/2015'), tags: ['Festival'], venue: 'The Rand School of Arts, Rand', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: 'Art Aquarium', featured: false, published: new Date('3/19/2015'), tags: ['Children', 'Kids', 'Holiday'], venue: 'SEA LIFE Sydney Aquarium', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: "Les Misèrables", featured: true, published: new Date('3/19/2015'), tags: ['Theatre'], venue: 'Capitol Theatre, Sydney', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: 'Street Foods of Saigon', featured: false, published: new Date('3/20/2015'), tags: ['Education'], venue: 'Otao Kitchen, Richmond', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: "Life's A Beach", featured: true, published: new Date('3/21/2015'), tags: ['Charity', 'Fundraisers'], venue: 'Bondi Pavilian, Sydney', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-      Event.create({title: 'Seascapes and Pictures', featured: true, published: new Date('3/21/2015'), tags: ['Acoustic', 'Instrumental'], venue: 'Strathfield Town Hall, Sydney', description: 'Nunc at velit quis lectus nonummy eleifend. Curabitur eros. Aenean ligula dolor, gravida auctor, auctor et, suscipit in, erat. Sed malesuada, enim ut congue pharetra, massa elit convallis pede, ornare scelerisque libero neque ut neque. In at libero. Curabitur molestie. Sed vel neque. Proin et dolor ac ipsum elementum malesuada. Praesent id orci. Donec hendrerit. In hac habitasse platea dictumst. Aenean sit amet arcu a turpis posuere pretium.'});
-    }
-  })
-}
-
-exports.createDefaultEvents = createDefaultEvents;

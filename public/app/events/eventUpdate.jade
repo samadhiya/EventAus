@@ -1,6 +1,6 @@
 .container
     .well
-        h1 {{published | date:'yyyy-MM-dd'}}
+
         form.form-horizontal(name="EventForm")
             fieldset
                 legend Event Details
@@ -8,6 +8,27 @@
                     label.col-md-2.control-label(for="title") Title
                     .col-md-10
                         input.form-control(name="title", type="text", placeholder='title', ng-model="event.title", required)
+                .form-group
+                    label.col-md-2.control-label(for="venue") Venue
+                    .col-md-10
+                        input.form-control(name="venue", type="text", placeholder="Venue", ng-model="event.venue", required)
+                .form-group
+                    label.col-md-2.control-label(for="address") Address
+                    .col-md-10
+                        input.form-control(name="address", type="text", placeholder='Address', ng-model="event.address", required)
+                .form-group
+                    label.col-md-2.control-label(for="description") Description
+                    .col-md-8
+                        textarea.form-control(name="description", type="text", rows="5", placeholder="Event description", ng-model="event.description", required)
+                .form-group
+                    label.col-md-2.control-label(for="datetime_start") Start Date & Time
+                    .col-md-3
+                        input.form-control(type='datetime-local', name='datetime_start', placeholder="yyyy-MM-ddTHH:mm:ss", ng-model='datetime_start')
+                    .form-group
+                        label.col-md-2.control-label(for="datetime_end") End Date &Time
+                        .col-md-3
+                            input.form-control(type='datetime-local', name='datetime_end', placeholder="yyyy-MM-ddTHH:mm:ss", ng-model='datetime_end')
+
                 .form-group
                     label.col-md-2.control-label(for="featured") Featured
                     .col-md-10
@@ -29,5 +50,4 @@
                             button.btn.btn-success(ng-click="update()") Update
                             &nbsp;
                             button.btn.btn-danger(ng-click="deleteEvent(event)") Delete
-
 

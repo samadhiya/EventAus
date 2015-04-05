@@ -8,22 +8,42 @@
           .col-md-10
             input.form-control(name="title", type="text", placeholder='title', ng-model="title", required)
         .form-group
-          label.col-md-2.control-label(for="featured") Venue
+          label.col-md-2.control-label(for="venue") Venue
           .col-md-10
             input.form-control(name="venue", type="text", placeholder="Venue", ng-model="venue", required)
         .form-group
-          label.col-md-2.control-label(for="featured") Featured
+          label.col-md-2.control-label(for="address") Address
           .col-md-10
-            input.form-control(name="featured", type="text", placeholder="Featured", ng-model="featured", required)
+            input.form-control(name="address", type="text", placeholder='Address', ng-model="address", required)
         .form-group
-          label.col-md-2.control-label(for="published") Published
-          .col-md-4
-            input.form-control(type='date', name='published', placeholder="dd/mm/yyyy", ng-model='published')
+          label.col-md-2.control-label(for="description") Description
+          .col-md-8
+            textarea.form-control(name="description", type="text", rows="5", placeholder="Event description", ng-model="description", required)
+        .form-group
+          label.col-md-2.control-label(for="featured") Featured
+          .col-md-2
+              select.form-control(ng-model="featured", name="featured" required)
+                option(value='true') True
+                    option(value='false') False
+        .form-group
+          label.col-md-2.control-label(for="datetime_start") Start Date & Time
+          .col-md-3
+            input.form-control(type='datetime-local', name='datetime_start', placeholder="yyyy-MM-ddTHH:mm:ss", ng-model='datetime_start')
+          .form-group
+              label.col-md-2.control-label(for="datetime_end") End Date &Time
+              .col-md-3
+                  input.form-control(type='datetime-local', name='datetime_end', placeholder="yyyy-MM-ddTHH:mm:ss", ng-model='datetime_end')
 
         .form-group
           label.col-md-2.control-label(for="tags") Tag
           .col-md-10
             input.form-control(name="tags", type="text", placeholder="Tags", ng-model="tags")
+
+        .form-group
+          label.col-md-2.control-label(for="tags") Image
+          .col-md-10
+             input.form-control(name="file", type="file", data-ng-model="image",data-ng-file-select="onFileSelect($files)" accept="image/png, image/jpeg")
+
         .form-group
           .col-md-10.col-md-offset-2
             .pull-right

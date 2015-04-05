@@ -4,6 +4,7 @@ var express = require('express'),
   bodyParser = require('body-parser'),
   cookieParser = require('cookie-parser'),
   session = require('express-session'),
+  multer=require('multer'),
   passport = require('passport');
 
 
@@ -20,6 +21,12 @@ module.exports = function(app, config) {
   app.use(session({secret: 'events yeah'}));
   app.use(passport.initialize());
   app.use(passport.session());
+  app.use(multer({ dest: './uploads/'}));
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
   app.use(stylus.middleware(
     {

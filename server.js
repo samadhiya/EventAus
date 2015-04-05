@@ -15,5 +15,7 @@ require('./server/config/passport')();
 
 require('./server/config/routes')(app);
 
+require('./server/config/eventImport')(app);
+
 app.listen(config.port);
 console.log('Listening on port ' + config.port + '...');

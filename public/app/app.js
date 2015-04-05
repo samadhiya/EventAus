@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute']);
+angular.module('app', ['ngResource', 'ngRoute', 'angularFileUpload']);
 
 angular.module('app').config(function($routeProvider, $locationProvider) {
   var routeRoleChecks = {
@@ -22,8 +22,8 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
       controller: 'UserListCtrl',
       resolve: routeRoleChecks.admin
     })
-    .when('/admin/events/:id', { templateUrl: '/partials/account/admin-event-list',
-      controller: 'adminEventListCtrl',
+    .when('/admin/events/:id', { templateUrl: '/partials/events/eventUpdate',
+      controller: 'eventUpdateCtrl',
       resolve: routeRoleChecks.admin
     })
     .when('/admin/event/create', { templateUrl: '/partials/events/event-add',
