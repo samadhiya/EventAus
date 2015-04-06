@@ -9,8 +9,8 @@ angular.module('app').controller('mvEventAddCtrl', function($scope, mvEvent, mvC
       var event ={
         "featured" :this.featured,
         "published" : new Date(),
-        "datetime_start" :new Date(this.datetime_start),
-        "datetime_end" :new Date(this.datetime_end),
+        "datetime_start" :new Date(this.datetime_start + ' UTC'),
+        "datetime_end" :new Date(this.datetime_end + ' UTC'),
         "tags" :this.tags,
         "description" :this.description,
         "address" :this.address,

@@ -4,8 +4,8 @@ angular.module('app').controller('eventUpdateCtrl', function($scope, $q, mvEvent
       if(event._id ===$routeParams.id){
         $scope.event = event;
         $scope.published = new Date(event.published);
-        $scope.datetime_start = new Date(event.datetime_start);
-        $scope.datetime_end = new Date(event.datetime_end);
+        $scope.datetime_start = new Date(event.datetime_start.split('T')[0] + ' ' + event.datetime_start.split('T')[1].replace('Z', ''));
+        $scope.datetime_end = new Date(event.datetime_end.split('T')[0] + ' ' + event.datetime_end.split('T')[1].replace('Z', ''));
 
       }
     })
@@ -13,8 +13,8 @@ angular.module('app').controller('eventUpdateCtrl', function($scope, $q, mvEvent
 
   $scope.update = function(){
     $scope.event.published = new Date($scope.published);
-    $scope.event.datetime_start = new Date($scope.datetime_start);
-    $scope.event.datetime_end = new Date($scope.datetime_end);
+    $scope.event.datetime_start = new Date($scope.datetime_start + ' UTC');
+    $scope.event.datetime_end = new Date($scope.datetime_end + ' UTC');
     //$scope.event.tags = $scope.event.tags.split(',');
     $scope.event.$update(function(){
       notifier.notify('Event updated!');
