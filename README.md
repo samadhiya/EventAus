@@ -6,3 +6,7 @@
 3. Install bower dependencies:  bower install
 4. Start up the server from terminal: node server
 5. View in browser at http://localhost:3000
+
+# Live Demo
+ eventaus.herokuapp.com
+ 
